@@ -1,0 +1,22 @@
+<div style="max-width: 400px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+  <h2>Sign Up</h2>
+
+  <label>Name:</label>
+  <input [(ngModel)]="name" type="text" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+  <label>Email:</label>
+  <input [(ngModel)]="email" type="email" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+  <label>Password:</label>
+  <input [(ngModel)]="password" type="password" style="width: 100%; padding: 8px; margin-bottom: 10px;">
+
+<button (click)="signup()" style="width: 100%; padding: 10px;" [disabled]="loading">
+  {{ loading ? 'Creating Account...' : 'Create Account' }}
+</button>
+  
+ <p style="margin-top: 15px; text-align: center;">
+  Already have an account?
+  <a (click)="goToLogin()" style="cursor: pointer;">Login</a>
+</p>
+
+</div>

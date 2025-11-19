@@ -1,0 +1,47 @@
+<div class="container" style="padding: 20px; max-width: 1200px; margin: auto;">
+
+  <!-- Search Bar -->
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+    <input 
+      [(ngModel)]="searchText" 
+      (keyup)="searchProducts()" 
+      placeholder="Search products..." 
+      style="padding: 8px; width: 300px; border-radius: 4px; border: 1px solid #ccc;"
+    >
+  </div>
+
+  <!-- Categories -->
+  <div style="margin-bottom: 20px;">
+    <strong>Categories:</strong>
+
+    <button 
+      style="margin-left: 10px;"
+      (click)="filterByCategory('')">
+      All
+    </button>
+
+    <button 
+      *ngFor="let c of categories" 
+      (click)="filterByCategory(c)"
+      style="margin-left: 10px;">
+      {{ c }}
+    </button>
+  </div>
+
+  <!-- Product Grid -->
+  <div 
+    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px;">
+    
+    <!-- USING PRODUCT CARD COMPONENT -->
+    <app-product-card 
+  *ngFor="let p of filteredProducts"
+  [product]="p"
+  (click)="showDetails.emit(p)">
+</app-product-card>
+
+    
+
+  </div>
+
+</div>
+  

@@ -1,0 +1,38 @@
+<div class="cart-container" style="width: 600px; margin: 30px auto;">
+
+  <h2>Your Cart</h2>
+
+  <div *ngIf="cart.length === 0">
+    <p>Your cart is empty.</p>
+  </div>
+
+  <div *ngFor="let item of cart" 
+       style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #ddd; padding: 10px 0;">
+
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <img [src]="item.image" alt="" style="width: 60px; height: 60px; object-fit: contain;">
+      <div>
+        <strong>{{ item.title}}</strong><br>
+        <span>{{ item.price| currency:'USD' }}</span>
+      </div>
+    </div>
+
+    <!-- Quantity Controls -->
+    <div>
+      <button (click)="decrease(item)">-</button>
+      <span style="padding: 0 10px;">{{ item.quantity}}</span>
+      <button (click)="increase(item)">+</button>
+    </div>
+
+    <button style="margin-left: 20px;" (click)="remove(item.id)">
+      Remove
+    </button>
+
+  </div>
+
+  <!-- Total Price -->
+  <div style="margin-top: 20px; text-align: right;">
+    <h3>Total: {{ getTotal()| currency:'USD'}}</h3>
+  </div>
+
+</div>
